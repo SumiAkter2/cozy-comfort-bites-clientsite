@@ -12,7 +12,6 @@ const PopularMenu = () => {
           (item) => item.category == "popular"
         );
         setMenu(popularItem);
-        console.log(menu);
       })
       .catch(function (error) {
         console.log(error);

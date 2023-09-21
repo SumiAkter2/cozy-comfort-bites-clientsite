@@ -3,13 +3,15 @@ import featureImg from "../../../assets/home/featured.jpg";
 import "./Feature.css";
 const Featured = () => {
   return (
-    <section className="">
-      <div className="hero min-h-screen feature-bg">
+    <section className="my-12">
+      <div className="hero min-h-screen feature-bg ">
         <div className="hero-overlay bg-black bg-opacity-60"></div>
 
         <div className="  text-neutral-content">
-          <HeadingTitle heading={"from our menu"} subtitle={"check it out"} />
-          <div className="flex justify-center items-center gap-6 mt-12 p-12">
+          <div className="mt-24">
+            <HeadingTitle heading={"from our menu"} subtitle={"check it out"} />
+          </div>
+          <div className="md:flex justify-center items-center gap-6 my-8 p-12">
             <div>
               <img src={featureImg} alt="" />
             </div>
