@@ -8,10 +8,12 @@ import slider2 from "../../assets/home/slide2.jpg";
 import slider3 from "../../assets/home/slide3.jpg";
 import slider4 from "../../assets/home/slide4.jpg";
 import slider5 from "../../assets/home/slide5.jpg";
+import HeadingTitle from "../Shared/HeadingTitle";
 
 const Category = () => {
   return (
     <div className="max-w-5xl mx-auto">
+      <HeadingTitle heading={"order online"} subtitle={"from 10AM to 10PM "} />
       <Swiper
         slidesPerView={4}
         spaceBetween={30}
