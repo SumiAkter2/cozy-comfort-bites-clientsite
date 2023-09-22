@@ -1,12 +1,18 @@
 import { Helmet } from "react-helmet-async";
+import Cover from "../Shared/Cover/Cover";
+import CoverImg from "../../assets/menu/banner3.jpg";
 
 const OurMenu = () => {
   return (
     <div>
       <Helmet>
-        <title>Cozy Comfort | Menu</title>
+        <title>Cozy Comfort Bites | Menu</title>
       </Helmet>
-      <h1>Our Menu</h1>
+      <Cover
+        Img={CoverImg}
+        Title={"Our Menu"}
+        ParagraphText={"Would You Like To Try A Dish?"}
+      />
     </div>
   );
 };
