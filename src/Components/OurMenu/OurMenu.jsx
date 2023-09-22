@@ -33,61 +33,30 @@ const OurMenu = () => {
         <MenuCategory items={offered} />
         <PrimaryButton buttonText={"Order Your Favorite Food"}></PrimaryButton>
       </div>
-      <div className= "my-8">
-        <Cover
-          Img={dessertImg}
+      <div className=" mb-8">
+        <MenuCategory
+          coverImg={dessertImg}
           Title={"Desserts"}
-          ParagraphText={
-            "Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi"
-          }
+          items={dessert}
         />
-        <MenuCategory items={dessert} />
         <PrimaryButton buttonText={"Order Your Favorite Food"}></PrimaryButton>
       </div>
-      <div className= "my-8">
-        <Cover
-          Img={saladImg}
-          Title={"Salads"}
-          ParagraphText={
-            "Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi"
-          }
-        />
-        <MenuCategory items={salad} />
+      <div className=" mb-8">
+        <MenuCategory coverImg={saladImg} Title={"Salads"} items={salad} />
         <PrimaryButton buttonText={"Order Your Favorite Food"}></PrimaryButton>
       </div>
 
-      <div className= "my-8">
-        <Cover
-          Img={soupImg}
-          Title={"Soups"}
-          ParagraphText={
-            "Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi"
-          }
-        />
-        <MenuCategory items={soup} />
+      <div className=" mb-8">
+        <MenuCategory coverImg={soupImg} Title={"Soups"} items={soup} />
         <PrimaryButton buttonText={"Order Your Favorite Food"}></PrimaryButton>
       </div>
 
-      <div className= "my-8">
-        <Cover
-          Img={pizzaImg}
-          Title={"Pizza"}
-          ParagraphText={
-            "Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi"
-          }
-        />
-        <MenuCategory items={pizza} />
+      <div className=" mb-8">
+        <MenuCategory coverImg={pizzaImg} Title={"Pizza"} items={pizza} />
         <PrimaryButton buttonText={"Order Your Favorite Food"}></PrimaryButton>
       </div>
-      <div className= "my-8">
-        <Cover
-          Img={CoverImg}
-          Title={"Drinks"}
-          ParagraphText={
-            "Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi"
-          }
-        />
-        <MenuCategory items={drinks} />
+      <div className=" mb-8">
+        <MenuCategory coverImg={CoverImg} Title={"Drinks"} items={drinks} />
         <PrimaryButton buttonText={"Order Your Favorite Food"}></PrimaryButton>
       </div>
     </div>
