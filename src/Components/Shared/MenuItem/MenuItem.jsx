@@ -10,7 +10,7 @@ const MenuItem = ({ item }) => {
       />
 
       <div>
-        <h3 className="text-xl uppercase">{name} </h3>
+        <h3 className="text-xl uppercase">{name}----------------- </h3>
         <p>{recipe} </p>
       </div>
       <p className="text-yellow-600 font-semibold">${price} </p>
