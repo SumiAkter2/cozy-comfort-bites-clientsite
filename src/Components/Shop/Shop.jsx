@@ -5,6 +5,7 @@ import "react-tabs/style/react-tabs.css";
 import { useState } from "react";
 import useMenu from "../Hook/useMenu";
 import FoodCard from "./FoodCard";
+import OrderTab from "./OrderTab";
 
 const Shop = () => {
   const [menu] = useMenu();
@@ -35,14 +36,19 @@ const Shop = () => {
         </div>
 
         <TabPanel>
-          <div className="grid md:grid-cols-3 md:px-16 gap-6 my-6">
-            {salad.map((item) => (
-              <FoodCard key={item._id} item={item} />
-            ))}
-          </div>
+          <OrderTab items={salad} />
         </TabPanel>
         <TabPanel>
-          <h2>Any content 2</h2>
+          <OrderTab items={dessert} />
+        </TabPanel>
+        <TabPanel>
+          <OrderTab items={drinks} />
+        </TabPanel>
+        <TabPanel>
+          <OrderTab items={soup} />
+        </TabPanel>
+        <TabPanel>
+          <OrderTab items={pizza} />
         </TabPanel>
       </Tabs>
     </div>
