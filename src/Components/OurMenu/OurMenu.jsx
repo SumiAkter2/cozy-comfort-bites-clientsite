@@ -8,10 +8,10 @@ import soupImg from "../../assets/menu/soup-bg.jpg";
 import useMenu from "../Hook/useMenu";
 import HeadingTitle from "../Shared/HeadingTitle";
 import MenuCategory from "../Home/PopularMenu/MenuCategory";
-import PrimaryButton from "../Shared/PrimaryButton/PrimaryButton";
 
 const OurMenu = () => {
   const [menu] = useMenu();
+
   const dessert = menu.filter((item) => item.category === "dessert");
   const drinks = menu.filter((item) => item.category === "drinks");
   const pizza = menu.filter((item) => item.category === "pizza");
@@ -31,33 +31,27 @@ const OurMenu = () => {
       <div className="my-24">
         <HeadingTitle heading={"today's Offer"} subtitle={"DON'T MISS"} />
         <MenuCategory items={offered} />
-        <PrimaryButton buttonText={"Order Your Favorite Food"}></PrimaryButton>
       </div>
       <div className=" mb-8">
         <MenuCategory
           coverImg={dessertImg}
-          Title={"Desserts"}
+          Title={"desserts"}
           items={dessert}
         />
-        <PrimaryButton buttonText={"Order Your Favorite Food"}></PrimaryButton>
       </div>
       <div className=" mb-8">
-        <MenuCategory coverImg={saladImg} Title={"Salads"} items={salad} />
-        <PrimaryButton buttonText={"Order Your Favorite Food"}></PrimaryButton>
+        <MenuCategory coverImg={saladImg} Title={"salads"} items={salad} />
       </div>
 
       <div className=" mb-8">
-        <MenuCategory coverImg={soupImg} Title={"Soups"} items={soup} />
-        <PrimaryButton buttonText={"Order Your Favorite Food"}></PrimaryButton>
+        <MenuCategory coverImg={soupImg} Title={"soup"} items={soup} />
       </div>
 
       <div className=" mb-8">
-        <MenuCategory coverImg={pizzaImg} Title={"Pizza"} items={pizza} />
-        <PrimaryButton buttonText={"Order Your Favorite Food"}></PrimaryButton>
+        <MenuCategory coverImg={pizzaImg} Title={"pizza"} items={pizza} />
       </div>
       <div className=" mb-8">
-        <MenuCategory coverImg={CoverImg} Title={"Drinks"} items={drinks} />
-        <PrimaryButton buttonText={"Order Your Favorite Food"}></PrimaryButton>
+        <MenuCategory coverImg={CoverImg} Title={"drinks"} items={drinks} />
       </div>
     </div>
   );

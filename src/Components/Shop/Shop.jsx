@@ -4,20 +4,28 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import { useState } from "react";
 import useMenu from "../Hook/useMenu";
-import FoodCard from "./FoodCard";
 import OrderTab from "./OrderTab";
+import { useParams } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const Shop = () => {
   const [menu] = useMenu();
+  const categories = ["salads", "desserts", "drinks", "soup", "pizza"];
+  const { category } = useParams();
+  const initialIndex = categories.indexOf(category);
+
   const dessert = menu.filter((item) => item.category === "dessert");
   const drinks = menu.filter((item) => item.category === "drinks");
   const pizza = menu.filter((item) => item.category === "pizza");
   const salad = menu.filter((item) => item.category === "salad");
   const soup = menu.filter((item) => item.category === "soup");
-  const offered = menu.filter((item) => item.category === "offered");
-  const [tabIndex, setTabIndex] = useState(0);
+
+  const [tabIndex, setTabIndex] = useState(initialIndex);
   return (
     <div>
+      <Helmet>
+        <title>Cozy Comfort Bites | Order</title>
+      </Helmet>
       <Cover
         Img={shopBanner}
         Title="Our Shop"
