@@ -1,6 +1,7 @@
 import HeadingTitle from "../../Shared/HeadingTitle";
 import featureImg from "../../../assets/home/featured.jpg";
 import "./Feature.css";
+
 const Featured = () => {
   return (
     <section className="my-12">
