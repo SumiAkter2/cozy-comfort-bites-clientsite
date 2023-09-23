@@ -7,6 +7,7 @@ import LogIn from "../Components/LogIn/LogIn";
 import SignUp from "../Components/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
 import Secret from "../Components/Shared/Secret";
+import NotFound from "../Components/NotFound/NotFound";
 
 export const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ export const router = createBrowserRouter([
             <Secret />
           </PrivateRoute>
         ),
+      },
+      {
+        path: "*",
+        element: <NotFound />,
       },
     ],
   },

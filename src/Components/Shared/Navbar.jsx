@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
-
+import { AiOutlineShoppingCart } from "react-icons/ai";
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const handleLogOut = () => {
@@ -28,6 +28,16 @@ const Navbar = () => {
       </li>
       <li>
         <Link to="/shop/salad">Our Shop</Link>
+      </li>
+      <li>
+        <Link to="/">
+          <label tabIndex={0} className="btn btn-ghost btn-circle btn-xs">
+            <div className="indicator ">
+              <AiOutlineShoppingCart size='25px'/>
+              <span className="badge badge-sm indicator-item">8</span>
+            </div>
+          </label>
+        </Link>
       </li>
     </>
   );
