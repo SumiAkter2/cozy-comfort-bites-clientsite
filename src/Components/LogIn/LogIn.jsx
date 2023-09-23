@@ -8,11 +8,11 @@ import {
 import { Helmet } from "react-helmet-async";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const LogIn = () => {
   const { signIn } = useContext(AuthContext);
 
-  // const captchaRef = useRef(null);
   const [disabled, setDisabled] = useState(true);
 
   useEffect(() => {
@@ -28,6 +28,15 @@ const LogIn = () => {
     signIn(email, password).then((result) => {
       const logInUser = result.user;
       console.log(logInUser);
+      Swal.fire({
+        title: "User Login Successful.",
+        showClass: {
+          popup: "animate__animated animate__fadeInDown",
+        },
+        hideClass: {
+          popup: "animate__animated animate__fadeOutUp",
+        },
+      });
     });
   };
   // captcha:
@@ -92,7 +101,6 @@ const LogIn = () => {
                     placeholder="Type the captcha above"
                     className="input input-bordered"
                   />
-                  
                 </div>
                 <div className="form-control mt-6">
                   <input
