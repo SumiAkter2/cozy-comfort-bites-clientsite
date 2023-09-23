@@ -7,13 +7,15 @@ import {
 } from "react-simple-captcha";
 import { Helmet } from "react-helmet-async";
 import { AuthContext } from "../../Provider/AuthProvider";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const LogIn = () => {
   const { signIn } = useContext(AuthContext);
-
   const [disabled, setDisabled] = useState(true);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   useEffect(() => {
     loadCaptchaEnginge(6);
@@ -37,6 +39,7 @@ const LogIn = () => {
           popup: "animate__animated animate__fadeOutUp",
         },
       });
+      navigate(from, { replace: true });
     });
   };
   // captcha:
@@ -53,7 +56,7 @@ const LogIn = () => {
   return (
     <div>
       <Helmet>
-        <title>Cozy Comfort Bites | Login</title>
+        <title>Cozy Comfort | Login</title>
       </Helmet>
       <div className="hero min-h-screen ">
         <div className="hero-content flex-col lg:flex-row-reverse">
