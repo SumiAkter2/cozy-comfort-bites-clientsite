@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import logInImg from "../../assets/LogIn/login.gif";
 import {
   loadCaptchaEnginge,
@@ -6,12 +6,28 @@ import {
   validateCaptcha,
 } from "react-simple-captcha";
 
+import { Helmet } from "react-helmet-async";
+import { AuthContext } from "../../Provider/AuthProvider";
+
 const LogIn = () => {
+  const { signIn } = useContext(AuthContext);
+  // console.log(authInfo);
   const captchaRef = useRef(null);
   const [disabled, setDisabled] = useState(true);
+
   useEffect(() => {
     loadCaptchaEnginge(6);
   }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+    signIn(email, password);
+  };
+  // captcha:
   const handleValidateCaptcha = () => {
     const user_captcha_value = captchaRef.current.value;
     console.log(user_captcha_value);
@@ -21,15 +37,11 @@ const LogIn = () => {
       setDisabled(true);
     }
   };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const email = form.email.value;
-    const password = form.password.value;
-    console.log(email, password);
-  };
   return (
     <div>
+      <Helmet>
+        <title>Cozy Comfort Bites | Login</title>
+      </Helmet>
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left md:w-1/2">
