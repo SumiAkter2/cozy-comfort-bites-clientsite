@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import logInImg from "../../assets/LogIn/login.gif";
 import {
   loadCaptchaEnginge,
@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 const LogIn = () => {
   const { signIn } = useContext(AuthContext);
 
-  const captchaRef = useRef(null);
+  // const captchaRef = useRef(null);
   const [disabled, setDisabled] = useState(true);
 
   useEffect(() => {
@@ -31,11 +31,12 @@ const LogIn = () => {
     });
   };
   // captcha:
-  const handleValidateCaptcha = () => {
-    const user_captcha_value = captchaRef.current.value;
+  const handleValidateCaptcha = (e) => {
+    const user_captcha_value = e.target.value;
     console.log(user_captcha_value);
     if (validateCaptcha(user_captcha_value) == true) {
       setDisabled(false);
+      console.log(validateCaptcha);
     } else {
       setDisabled(true);
     }
@@ -85,18 +86,13 @@ const LogIn = () => {
                     <LoadCanvasTemplate />
                   </label>
                   <input
+                    onBlur={handleValidateCaptcha}
                     type="text"
                     name="captcha"
-                    ref={captchaRef}
                     placeholder="Type the captcha above"
                     className="input input-bordered"
                   />
-                  <button
-                    onClick={handleValidateCaptcha}
-                    className="btn btn-outline btn-xs mt-2"
-                  >
-                    Validate
-                  </button>
+                  
                 </div>
                 <div className="form-control mt-6">
                   <input
@@ -106,7 +102,7 @@ const LogIn = () => {
                     value="Log In"
                   />
                 </div>
-                <p className="text-purple-700 text-center">
+                <p className="text-purple-700 text-center mt-2">
                   New Here?
                   <Link to="/signup" className="font-semibold pl-2">
                     Create A New Account
