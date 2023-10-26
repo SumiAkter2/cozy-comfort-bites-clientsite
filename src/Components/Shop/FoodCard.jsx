@@ -1,10 +1,62 @@
+import { useContext } from "react";
 import PrimaryButton from "../Shared/PrimaryButton/PrimaryButton";
+import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const FoodCard = ({ item }) => {
   const { name, image, recipe, price } = item;
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const handleAddToCard = (item) => {
-    console.log(item);
+    // console.log(item);
+    if (user && user.email) {
+      const cartItem = {
+        // itemId: item._id,
+        name,
+        price,
+        image,
+        email: user.email,
+      };
+      fetch("http://localhost:5000/carts", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json; ",
+        },
+        body: JSON.stringify(cartItem),
+      })
+        .then((res) => res.json)
+        .then((data) => {
+          console.log(data);
+          if (data.insertedId) {
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Successfully Added.",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
+        })
+        .catch((err) => console.log(err));
+    } else {
+      Swal.fire({
+        text: "Please Log In.",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, Log In",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/login", { state: { from: location } });
+        }
+      });
+    }
   };
+
   return (
     <div>
       <div className="card card-compact w-96 bg-base-100 shadow-xl">
