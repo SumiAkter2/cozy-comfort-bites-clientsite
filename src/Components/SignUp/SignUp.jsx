@@ -3,7 +3,7 @@ import SignUpImg from "../../assets/LogIn/signUp.gif";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Provider/AuthProvider";
-
+import PrimaryButton from '../Shared/PrimaryButton/PrimaryButton'
 const SignUp = () => {
   const navigate = useNavigate();
   const { createUser, updateUser } = useContext(AuthContext);
@@ -33,6 +33,9 @@ const SignUp = () => {
   console.log(watch("example"));
   return (
     <div>
+      <Link to="/">
+        <PrimaryButton buttonText="Go Home" />
+      </Link>
       <div className="hero min-h-screen ">
         <div className="hero-content flex-col lg:flex-row">
           <div className="text-center lg:text-left md:w-1/2">

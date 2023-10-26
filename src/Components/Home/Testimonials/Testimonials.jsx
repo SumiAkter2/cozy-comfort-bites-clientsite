@@ -16,7 +16,7 @@ const Testimonials = () => {
     axios
       .get("http://localhost:5000/review")
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setReviews(response.data);
       })
       .catch((err) => console.log(err));

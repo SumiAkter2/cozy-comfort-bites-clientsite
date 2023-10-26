@@ -2,11 +2,25 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import logo from "../../assets/logo1.png";
+import Swal from "sweetalert2";
+
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+
   const handleLogOut = () => {
     logOut()
-      .then(() => {})
+      .then(() => {
+        Swal.fire({
+          title: "User  Successful Sign Out.",
+          showClass: {
+            popup: "animate__animated animate__fadeInDown",
+          },
+          hideClass: {
+            popup: "animate__animated animate__fadeOutUp",
+          },
+        });
+      })
       .catch((err) => console.log(err));
   };
   const navItem = (
@@ -14,9 +28,7 @@ const Navbar = () => {
       <li>
         <Link to="/">Home</Link>
       </li>
-      <li>
-        <Link to="/contact">Contact Us</Link>
-      </li>
+
       <li>
         <Link to="/dashboard">Dashboard</Link>
       </li>
@@ -24,7 +36,7 @@ const Navbar = () => {
         <Link to="/menu">Our Menu</Link>
       </li>
       <li>
-        <Link to="/secret">secret</Link>
+        <Link to="/secret">Secret</Link>
       </li>
       <li>
         <Link to="/shop/salad">Our Shop</Link>
@@ -33,7 +45,7 @@ const Navbar = () => {
         <Link to="/">
           <label tabIndex={0} className="btn btn-ghost btn-circle btn-xs">
             <div className="indicator ">
-              <AiOutlineShoppingCart size='25px'/>
+              <AiOutlineShoppingCart size="25px" />
               <span className="badge badge-sm indicator-item">8</span>
             </div>
           </label>
@@ -43,7 +55,7 @@ const Navbar = () => {
   );
   return (
     <div>
-      <div className="max-w-screen-xl navbar fixed z-10 opacity-70 bg-black text-white">
+      <div className="max-w-screen-xl navbar fixed z-10 opacity-90 bg-black text-white">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -70,6 +82,11 @@ const Navbar = () => {
             </ul>
           </div>
           <Link to="/" className="btn btn-ghost normal-case text-xl">
+            <img
+              src={logo}
+              alt="logo"
+              className="w-10 h-8 bg-white rounded-full"
+            />
             Cozy Comfort Bites
           </Link>
         </div>
@@ -79,7 +96,8 @@ const Navbar = () => {
         <div className="navbar-end ">
           {user ? (
             <>
-              <span>{user?.displayName}</span>
+              <span className="font-bold">{user?.displayName}</span>
+              <span>{/* <img src={user?.photoURL} alt="user-img" /> */}</span>
               <button onClick={handleLogOut} className="btn btn-ghost">
                 Sign Out
               </button>
