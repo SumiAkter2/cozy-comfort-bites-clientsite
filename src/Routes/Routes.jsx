@@ -8,6 +8,7 @@ import SignUp from "../Components/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
 import Secret from "../Components/Shared/Secret";
 import NotFound from "../Components/NotFound/NotFound";
+import Dashboard from "../Components/Dashboard/Dashboard";
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
       {
         path: "signup",
         element: <SignUp />,
+      },
+      {
+        path: "dashboard",
+        element: <Dashboard />,
       },
       {
         path: "secret",

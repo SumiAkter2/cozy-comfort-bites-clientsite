@@ -10,45 +10,44 @@ const FoodCard = ({ item }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const handleAddToCard = (item) => {
-    // console.log(item);
+  const handleAddToCart = (item) => {
     if (user && user.email) {
       const cartItem = {
-        // itemId: item._id,
-        name,
-        price,
-        image,
+        foodId: item._id,
+        name: item.name,
+        price: item.price,
+        image: item.image,
         email: user.email,
       };
-      fetch("http://localhost:5000/carts", {
+      console.log(cartItem);
+      fetch("http://localhost:5000/cart", {
         method: "POST",
         headers: {
-          "Content-type": "application/json; ",
+          "content-type": "application/json",
         },
         body: JSON.stringify(cartItem),
       })
-        .then((res) => res.json)
+        .then((res) => res.json())
         .then((data) => {
-          console.log(data);
           if (data.insertedId) {
             Swal.fire({
-              position: "top-end",
+              position: "center",
               icon: "success",
-              title: "Successfully Added.",
+              title: "Successfully added.",
               showConfirmButton: false,
-              timer: 1500,
+              timer: 1000,
             });
           }
-        })
-        .catch((err) => console.log(err));
+        });
     } else {
       Swal.fire({
-        text: "Please Log In.",
+        title: "Please login first",
+        text: "You won't be able to add before login!",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, Log In",
+        confirmButtonText: "Login!",
       }).then((result) => {
         if (result.isConfirmed) {
           navigate("/login", { state: { from: location } });
@@ -70,10 +69,10 @@ const FoodCard = ({ item }) => {
           <h2 className="card-title">{name}</h2>
           <p>{recipe}</p>
           <div
-            onClick={() => handleAddToCard(item)}
+            onClick={() => handleAddToCart(item)}
             className="card-actions justify-center "
           >
-            <PrimaryButton buttonText={"Add To Card"}></PrimaryButton>
+            <PrimaryButton buttonText={"Add To Cart"}></PrimaryButton>
           </div>
         </div>
       </div>

@@ -9,19 +9,21 @@ const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
 
   const handleLogOut = () => {
-    logOut()
-      .then(() => {
-        Swal.fire({
-          title: "User  Successful Sign Out.",
-          showClass: {
-            popup: "animate__animated animate__fadeInDown",
-          },
-          hideClass: {
-            popup: "animate__animated animate__fadeOutUp",
-          },
-        });
-      })
-      .catch((err) => console.log(err));
+    Swal.fire({
+      title: "Are you sure to sign out?",
+      //  text: "You won't be able to add before login!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes,Sure!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        logOut()
+          .then(() => {})
+          .catch((err) => console.log(err));
+      }
+    });
   };
   const navItem = (
     <>

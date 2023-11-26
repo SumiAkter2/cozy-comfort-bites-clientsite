@@ -3,7 +3,8 @@ import SignUpImg from "../../assets/LogIn/signUp.gif";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Provider/AuthProvider";
-import PrimaryButton from '../Shared/PrimaryButton/PrimaryButton'
+import PrimaryButton from "../Shared/PrimaryButton/PrimaryButton";
+import Swal from "sweetalert2";
 const SignUp = () => {
   const navigate = useNavigate();
   const { createUser, updateUser } = useContext(AuthContext);
@@ -24,6 +25,13 @@ const SignUp = () => {
         .then(() => {
           console.log("user profile info updated");
           reset();
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "SignUp successfully",
+            showConfirmButton: false,
+            timer: 1000,
+          });
 
           navigate("/");
         })
