@@ -3,12 +3,14 @@ import PrimaryButton from "../Shared/PrimaryButton/PrimaryButton";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
+import useCart from "../Hook/useCart";
 
 const FoodCard = ({ item }) => {
   const { name, image, recipe, price } = item;
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
+  const [, refetch] = useCart();
 
   const handleAddToCart = (item) => {
     if (user && user.email) {
@@ -30,12 +32,13 @@ const FoodCard = ({ item }) => {
         .then((res) => res.json())
         .then((data) => {
           if (data.insertedId) {
+            refetch(); //  refetch= update the cart length in navbar cart
             Swal.fire({
               position: "center",
               icon: "success",
               title: "Successfully added.",
               showConfirmButton: false,
-              timer: 1000,
+              timer: 800,
             });
           }
         });

@@ -4,10 +4,11 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import logo from "../../assets/logo1.png";
 import Swal from "sweetalert2";
+import useCart from "../Hook/useCart";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
-
+  const [cart] = useCart();
   const handleLogOut = () => {
     Swal.fire({
       title: "Are you sure to sign out?",
@@ -48,7 +49,9 @@ const Navbar = () => {
           <label tabIndex={0} className="btn btn-ghost btn-circle btn-xs">
             <div className="indicator ">
               <AiOutlineShoppingCart size="25px" />
-              <span className="badge badge-sm indicator-item">8</span>
+              <span className="badge badge-sm indicator-item">
+                {cart?.length || 0} +
+              </span>
             </div>
           </label>
         </Link>
