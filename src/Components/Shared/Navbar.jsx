@@ -33,7 +33,7 @@ const Navbar = () => {
       </li>
 
       <li>
-        <Link to="/dashboard">Dashboard</Link>
+        <Link to="/dashboard/mycart">Dashboard</Link>
       </li>
       <li>
         <Link to="/menu">Our Menu</Link>
@@ -50,7 +50,7 @@ const Navbar = () => {
             <div className="indicator ">
               <AiOutlineShoppingCart size="25px" />
               <span className="badge badge-sm indicator-item">
-                {cart?.length || 0} +
+                {cart?.length || 0}
               </span>
             </div>
           </label>
