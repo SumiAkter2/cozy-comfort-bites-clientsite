@@ -15,134 +15,82 @@ import { NavLink, Outlet } from "react-router-dom";
 
 const Dashboard = () => {
   return (
-    <div>
-      <div className="drawer lg:drawer-open py-24 lg:py-0">
-        <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content flex flex-col items-center justify-center">
-          {/* Page content here */}
+    <div className="drawer lg:drawer-open">
+      <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+      <div className="drawer-content flex flex-col items-center justify-center">
+        {/* Page content here */}
+        <label
+          htmlFor="my-drawer-2"
+          className="btn btn-ghost drawer-button lg:hidden my-6"
+        >
+          <CgMenuHotdog size="30px" color="orange" />
+        </label>
+        <Outlet />
+      </div>
+      <div className="drawer-side">
+        <label
+          htmlFor="my-drawer-2"
+          aria-label="close sidebar"
+          className="drawer-overlay"
+        ></label>
 
-          <Outlet />
-          <label
-            htmlFor="my-drawer-2"
-            className="btn btn-ghost drawer-button lg:hidden absolute right-3"
-          >
-            <CgMenuHotdog size="30px" />
-          </label>
-        </div>
-        <div className="drawer-side bg-orange-300">
-          <label
-            htmlFor="my-drawer-2"
-            aria-label="close sidebar"
-            className="drawer-overlay"
-          ></label>
-
-          {/* user */}
-          <h1 className="text-2xl font-bold p-4 mb-6">Cozy comfort bites</h1>
-          <ul className="menu p-4 w-80 min-h-full  ">
-            {/* Sidebar content here */}
-
-            <li>
-              <NavLink>
-                <IoMdHome /> User Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink>
-                <IoWalletSharp /> Payment History
-              </NavLink>
-            </li>
-            <li>
-              <NavLink>
-                <FaCalendarAlt /> Reservation
-              </NavLink>
-            </li>
-            <li>
-              <NavLink>
-                <PiShoppingCartFill /> My Cart
-              </NavLink>
-            </li>
-            <li>
-              <NavLink>
-                <IoIosListBox /> My Booking
-              </NavLink>
-            </li>
-            <li>
-              <NavLink>
-                <MdReviews /> Add review
-              </NavLink>
-            </li>
-            <div className="divider"></div>
-            <li>
-              <NavLink to="/">
-                <IoMdHome /> Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/menu">
-                <CgMenuGridR /> Menu
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/shop/salad">
-                <FaBagShopping /> Shop
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="contact">
-                <MdEmail /> Contact
-              </NavLink>
-            </li>
-          </ul>
-          <ul className="menu p-4 w-80 min-h-full bg-gray-300 text-base-content  ">
-            {/* Sidebar content here */}
-            <li>
-              <NavLink>
-                <IoMdHome /> Admin Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink>
-                <MdFastfood /> Add Items
-              </NavLink>
-            </li>
-            <li>
-              <NavLink>
-                <TfiMenuAlt /> Manage Items
-              </NavLink>
-            </li>
-            <li>
-              <NavLink>
-                <IoIosListBox /> Manage Bookings
-              </NavLink>
-            </li>
-            <li>
-              <NavLink>
-                <FaUsers /> All Users
-              </NavLink>
-            </li>
-            <div className="divider"></div>
-            <li>
-              <NavLink>
-                <IoMdHome /> Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink>
-                <CgMenuGridR /> Menu
-              </NavLink>
-            </li>
-            <li>
-              <NavLink>
-                <FaBagShopping /> Shop
-              </NavLink>
-            </li>
-            <li>
-              <NavLink>
-                <MdEmail /> Contact
-              </NavLink>
-            </li>
-          </ul>
-        </div>
+        <ul className="menu p-4 w-80 min-h-full bg-orange-300 gap-y-2 font-bold">
+          <h1 className="text-2xl font-bold p-4 mb-6">
+            Cozy Comfort <br />{" "}
+            <span className="tracking-widest w-full">Bites</span>
+          </h1>
+          <li>
+            <NavLink to="/dashboard/userhome">
+              <IoMdHome /> User Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard/payment">
+              <IoWalletSharp /> Payment History
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard/reservation">
+              <FaCalendarAlt /> Reservation
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard/mycart">
+              <PiShoppingCartFill /> My Cart
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard/mybooking">
+              <IoIosListBox /> My Booking
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard/review">
+              <MdReviews /> Add review
+            </NavLink>
+          </li>
+          <div className="divider"></div>
+          <li>
+            <NavLink to="/">
+              <IoMdHome /> Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/menu">
+              <CgMenuGridR /> Menu
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/shop/salad">
+              <FaBagShopping /> Shop
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="contact">
+              <MdEmail /> Contact
+            </NavLink>
+          </li>
+        </ul>
       </div>
     </div>
   );

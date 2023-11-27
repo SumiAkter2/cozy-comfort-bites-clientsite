@@ -2,10 +2,3 @@
 @tailwind components;
 @tailwind utilities;
 
-.drawer-side a{
-    background: transparent;
-}
-.drawer-side a.active {
-    color: #fff;
-    background-color: transparent;
-}
