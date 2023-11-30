@@ -9,6 +9,7 @@ import { Helmet } from "react-helmet-async";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 const LogIn = () => {
   const { signIn } = useContext(AuthContext);
@@ -119,6 +120,10 @@ const LogIn = () => {
                 </p>
                 <p className="text-center mt-6">Or Sign In With</p>
               </form>
+
+              <div className="flex justify-center items-center gap-3 ">
+                <SocialLogin />
+              </div>
             </div>
           </div>
         </div>

@@ -5,6 +5,8 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Provider/AuthProvider";
 import PrimaryButton from "../Shared/PrimaryButton/PrimaryButton";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -24,7 +26,7 @@ const SignUp = () => {
       console.log(signUpUser);
       updateUser(data.name, data.photoURL)
         .then(() => {
-          const savedUser = { name: data.displayName, email: data.email };
+          const savedUser = { name: data.name, email: data.email };
           fetch(`http://localhost:5000/user`, {
             method: "POST",
             headers: {
@@ -54,15 +56,16 @@ const SignUp = () => {
   console.log(watch("example"));
   return (
     <div>
-      <Link to="/">
-        <PrimaryButton buttonText="Go Home" />
-      </Link>
-      <div className="hero min-h-screen ">
+      <Helmet>
+        <title>Cozy Comfort | Sign Up</title>
+      </Helmet>
+
+      <div className="hero">
         <div className="hero-content flex-col lg:flex-row">
           <div className="text-center lg:text-left md:w-1/2">
             <img src={SignUpImg} alt="Sign Up -gif" />
           </div>
-          <div className="card flex-shrink-0 w-full max-w-sm l ">
+          <div className="card flex-shrink-0 w-full max-w-sm ">
             <div className="card-body">
               <h1 className="md:text-3xl font-bold text-center ">Sign Up</h1>
               <form onSubmit={handleSubmit(onSubmit)}>
@@ -149,14 +152,18 @@ const SignUp = () => {
                     value="Sign Up"
                   />
                 </div>
-                <p className="text-blue-500 text-center mt-2">
-                  Already Registered?
-                  <Link to="/login" className="font-semibold pl-2">
-                    Go to LogIN
-                  </Link>
-                </p>
-                <p className="text-center mt-6">Or Sign In With</p>
               </form>
+
+              <p className="text-blue-500 text-center mt-2">
+                Already Registered?
+                <Link to="/login" className="font-semibold pl-2">
+                  Go to Login
+                </Link>
+              </p>
+              <p className="text-center mt-6">Or Sign In With</p>
+              <div className="flex justify-center items-center gap-3 ">
+                <SocialLogin />
+              </div>
             </div>
           </div>
         </div>
