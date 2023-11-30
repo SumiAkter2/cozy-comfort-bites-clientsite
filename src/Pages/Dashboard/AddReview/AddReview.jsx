@@ -59,7 +59,7 @@ const AddReview = () => {
           type="submit"
           className=" bg-gradient-to-r from-sky-500 to-indigo-500 flex justify-center items-center p-3 my-4 rounded-md text-white"
         >
-          Send Review <IoRocket className="ml-2"  size="20px"/>
+          Send Review <IoRocket className="ml-2" size="20px" />
         </button>
       </form>
     </div>

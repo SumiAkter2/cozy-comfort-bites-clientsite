@@ -1,9 +1,15 @@
 import { Helmet } from "react-helmet-async";
 import { MdDeleteForever } from "react-icons/md";
 import useCart from "../../../Components/Hook/useCart";
+import { Link } from "react-router-dom";
 
 const MyCart = () => {
   const [cart] = useCart();
+  const initialValue = 0;
+  const totalPrice = cart.reduce((sum, item) => item.price + sum, initialValue);
+
+  console.log(totalPrice);
+
   return (
     <div>
       <Helmet>
@@ -17,10 +23,12 @@ const MyCart = () => {
         </h2>
       </div>
 
-      <div className="flex justify-between items-center gap-6 font-bold text-black mt-12 ">
+      <div className="flex justify-between items-center gap-6 font-bold text-black my-12 ">
         <h1 className="text-2xl ">Total Order: {cart.length}</h1>
-        <h1 className="text-2xl ">Total Price: $ 0</h1>
-        <button className="btn btn-ghost">Pay</button>
+        <h1 className="text-2xl ">Total Price: $ {totalPrice}</h1>
+        <Link to="/dashboard/payment">
+          <button className="btn btn-warning btn-sm">Pay</button>
+        </Link>
       </div>
 
       <div className="overflow-x-auto mt-4 mb-12 ">

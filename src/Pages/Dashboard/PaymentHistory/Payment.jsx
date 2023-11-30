@@ -1,7 +1,11 @@
+import { Helmet } from "react-helmet-async";
 import { MdPayment } from "react-icons/md";
 const Payment = () => {
   return (
     <div>
+      <Helmet>
+        <title>Cozy Comfort  | Payment</title>
+      </Helmet>
       <div className="mx-auto text-center uppercase my-8 ">
         <p className="text-yellow-500 my-6">
           -----let&apos;s introduce our payment method-----

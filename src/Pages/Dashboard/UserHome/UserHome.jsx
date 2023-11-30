@@ -4,11 +4,15 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { useContext } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import img from "../../../../src/assets/contact/emo.png";
+import { Helmet } from "react-helmet-async";
 
 const UserHome = () => {
   const { user } = useContext(AuthContext);
   return (
     <div>
+      <Helmet>
+        <title>Cozy Comfort  | User Home</title>
+      </Helmet>
       <h1 className="text-2xl font-bold p-4 mb-6 tracking-widest  mx-4">
         HI! WELCOME BACK!
       </h1>

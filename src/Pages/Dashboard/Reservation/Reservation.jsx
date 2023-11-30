@@ -2,9 +2,13 @@ import { IoIosListBox } from "react-icons/io";
 import { FaPhone } from "react-icons/fa6";
 import { FaLocationDot } from "react-icons/fa6";
 import { IoTime } from "react-icons/io5";
+import { Helmet } from "react-helmet-async";
 const Reservation = () => {
   return (
     <div>
+      <Helmet>
+        <title>Cozy Comfort | Reservation</title>
+      </Helmet>
       <div className="mx-auto text-center uppercase my-8  w-1/2">
         <p className="text-yellow-500 ">-----Reservation-----</p>
         <h2 className="md:text-3xl text-2xl mt-2 border-y-4 py-2">
