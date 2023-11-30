@@ -1,4 +1,7 @@
 import { IoIosListBox } from "react-icons/io";
+import { FaPhone } from "react-icons/fa6";
+import { FaLocationDot } from "react-icons/fa6";
+import { IoTime } from "react-icons/io5";
 const Reservation = () => {
   return (
     <div>
@@ -95,6 +98,43 @@ const Reservation = () => {
         <h2 className="md:text-3xl text-2xl mt-2 border-y-4 py-2">
           Book A Table?
         </h2>
+      </div>
+
+      <div className="grid lg:grid-cols-3 grid-cols-1 gap-3 mb-12">
+        <div>
+          <div className="p-2  bg-gradient-to-r from-sky-500 to-indigo-500   rounded-sm">
+            <div className="flex justify-center items-center">
+              <FaPhone color="white" size="30px" />
+            </div>
+          </div>
+          <div className="text-center p-6 font-bold">
+            <h1 className="text-xl my-4 ">Phone</h1>
+            <p>09900088888</p>
+          </div>
+        </div>
+        <div>
+          <div className="p-2  bg-gradient-to-r from-sky-500 to-indigo-500   rounded-sm">
+            <div className="flex justify-center items-center">
+              <FaLocationDot color="white" size="30px" />
+            </div>
+          </div>
+          <div className="text-center p-6 font-bold">
+            <h1 className="text-xl my-4">Address</h1>
+            <p>+04556777(00088888)</p>
+          </div>
+        </div>
+        <div>
+          <div className="p-2  bg-gradient-to-r from-sky-500 to-indigo-500   rounded-sm">
+            <div className="flex justify-center items-center">
+              <IoTime color="white" size="30px" />
+            </div>
+          </div>
+          <div className="text-center p-6 font-bold">
+            <h1 className="text-xl my-4">Working Hours</h1>
+            <p>Mon-Fri:09:23</p>
+            <p>Sat-Sun:10:24</p>
+          </div>
+        </div>
       </div>
     </div>
   );
