@@ -3,7 +3,6 @@ import SignUpImg from "../../assets/LogIn/signUp.gif";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Provider/AuthProvider";
-import PrimaryButton from "../Shared/PrimaryButton/PrimaryButton";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
 import SocialLogin from "../SocialLogin/SocialLogin";

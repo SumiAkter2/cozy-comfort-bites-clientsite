@@ -3,7 +3,8 @@ import { IoMdHome } from "react-icons/io";
 import { CgMenuGridR } from "react-icons/cg";
 import { FaBagShopping } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
-import { MdFastfood } from "react-icons/md";
+import { GiForkKnifeSpoon } from "react-icons/gi";
+import { FaBook } from "react-icons/fa";
 import { TfiMenuAlt } from "react-icons/tfi";
 import { IoIosListBox } from "react-icons/io";
 import { FaUsers } from "react-icons/fa";
@@ -16,6 +17,7 @@ import useCart from "../Components/Hook/useCart";
 
 const Dashboard = () => {
   const [cart] = useCart();
+  const isAdmin = true;
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -41,37 +43,72 @@ const Dashboard = () => {
             Cozy Comfort <br />
             <span className="tracking-widest w-full">Bites</span>
           </h1>
-          <li>
-            <NavLink to="/dashboard/userhome">
-              <IoMdHome /> User Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/dashboard/payment">
-              <IoWalletSharp /> Payment History
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/dashboard/reservation">
-              <FaCalendarAlt /> Reservation
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/dashboard/mycart">
-              <PiShoppingCartFill /> My Cart
-              <div className="badge badge-lg">{cart.length}</div>
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/dashboard/mybooking">
-              <IoIosListBox /> My Booking
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/dashboard/addreview">
-              <MdReviews /> Add review
-            </NavLink>
-          </li>
+          {isAdmin ? (
+            <>
+              {" "}
+              <li>
+                <NavLink to="/dashboard/adminhome">
+                  <IoMdHome /> Admin Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/additems">
+                  <GiForkKnifeSpoon /> Add Items
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/manageitems">
+                  <TfiMenuAlt /> Manage Items
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/managebookings">
+                  <FaBook /> Manage Bookings
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/allusers">
+                  <FaUsers /> All Users
+                </NavLink>
+              </li>
+            </>
+          ) : (
+            <>
+              {" "}
+              <li>
+                <NavLink to="/dashboard/userhome">
+                  <IoMdHome /> User Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/payment">
+                  <IoWalletSharp /> Payment History
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/reservation">
+                  <FaCalendarAlt /> Reservation
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/mycart">
+                  <PiShoppingCartFill /> My Cart
+                  <div className="badge badge-lg">{cart.length}</div>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/mybooking">
+                  <IoIosListBox /> My Booking
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/addreview">
+                  <MdReviews /> Add review
+                </NavLink>
+              </li>
+            </>
+          )}
+
           <div className="divider"></div>
           <li>
             <NavLink to="/">

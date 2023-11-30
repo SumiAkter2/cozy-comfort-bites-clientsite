@@ -11,7 +11,7 @@ const UserHome = () => {
   return (
     <div>
       <Helmet>
-        <title>Cozy Comfort  | User Home</title>
+        <title>Cozy Comfort | User Home</title>
       </Helmet>
       <h1 className="text-2xl font-bold p-4 mb-6 tracking-widest  mx-4">
         HI! WELCOME BACK!
