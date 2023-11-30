@@ -2,16 +2,45 @@ import { Helmet } from "react-helmet-async";
 import { MdDeleteForever } from "react-icons/md";
 import useCart from "../../../Components/Hook/useCart";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const MyCart = () => {
-  const [cart] = useCart();
+  const [cart, refetch] = useCart();
   const initialValue = 0;
   const totalPrice = cart.reduce((sum, item) => item.price + sum, initialValue);
 
-  console.log(totalPrice);
-
+  const handleDeleteItem = (item) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/cart/${item._id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Successfully Deleted!",
+                showConfirmButton: false,
+                timer: 1000,
+              });
+              refetch();
+            }
+          });
+      }
+    });
+  };
   return (
-    <div>
+    <div className="lg:w-2/3 mx-6">
       <Helmet>
         <title>Cozy Comfort | My Cart</title>
       </Helmet>
@@ -43,16 +72,25 @@ const MyCart = () => {
             </tr>
           </thead>
           <tbody>
-            {cart.map((c, index) => (
-              <tr className="font-bold " key={c._id}>
+            {cart.map((item, index) => (
+              <tr className="font-bold hover" key={item._id}>
                 <th>{index + 1}</th>
                 <td>
-                  <img className="w-12 rounded-sm" src={c.image} alt="image" />
+                  <img
+                    className="w-12 rounded-sm"
+                    src={item.image}
+                    alt="image"
+                  />
                 </td>
-                <td>{c.name}</td>
-                <td>${c.price}</td>
+                <td>{item.name}</td>
+                <td>${item.price}</td>
                 <td>
-                  <button className="btn btn-ghost">
+                  <button
+                    className="btn btn-ghost"
+                    onClick={() => {
+                      handleDeleteItem(item);
+                    }}
+                  >
                     <MdDeleteForever size="30px" color="red" />
                   </button>
                 </td>
