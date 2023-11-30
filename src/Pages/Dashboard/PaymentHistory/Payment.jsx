@@ -2,8 +2,10 @@ import { MdPayment } from "react-icons/md";
 const Payment = () => {
   return (
     <div>
-      <div className="mx-auto text-center uppercase my-8  w-1/2">
-        <p className="text-yellow-500 ">-----let&apos;s go with-----</p>
+      <div className="mx-auto text-center uppercase my-8 ">
+        <p className="text-yellow-500 my-6">
+          -----let&apos;s introduce our payment method-----
+        </p>
         <h2 className="md:text-3xl text-2xl mt-2 border-y-4 py-2">Payment</h2>
       </div>
 
