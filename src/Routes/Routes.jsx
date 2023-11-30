@@ -10,6 +10,11 @@ import Secret from "../Components/Shared/Secret";
 import NotFound from "../Components/NotFound/NotFound";
 import Dashboard from "../layout/Dashboard";
 import MyCart from "../Pages/Dashboard/MyCart/MyCart";
+import AddReview from "../Pages/Dashboard/AddReview/AddReview";
+import Payment from "../Pages/Dashboard/PaymentHistory/Payment";
+import Reservation from "../Pages/Dashboard/Reservation/Reservation";
+import MyBooking from "../Pages/Dashboard/MyBooking/MyBooking";
+import UserHome from "../Pages/Dashboard/UserHome/UserHome";
 
 export const router = createBrowserRouter([
   {
@@ -57,8 +62,28 @@ export const router = createBrowserRouter([
     element: <Dashboard />,
     children: [
       {
+        path: "userhome",
+        element: <UserHome />,
+      },
+      {
         path: "mycart",
         element: <MyCart />,
+      },
+      {
+        path: "addreview",
+        element: <AddReview />,
+      },
+      {
+        path: "payment",
+        element: <Payment />,
+      },
+      {
+        path: "reservation",
+        element: <Reservation />,
+      },
+      {
+        path: "mybooking",
+        element: <MyBooking />,
       },
     ],
   },

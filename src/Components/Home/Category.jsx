@@ -12,7 +12,7 @@ import HeadingTitle from "../Shared/HeadingTitle";
 
 const Category = () => {
   return (
-    <div className="max-w-5xl mx-auto">
+    <div className="max-w-5xl mx-auto my-24">
       <HeadingTitle heading={"order online"} subtitle={"from 10AM to 10PM "} />
       <Swiper
         slidesPerView={4}
@@ -20,39 +20,38 @@ const Category = () => {
         centeredSlides={true}
         pagination={{
           clickable: true,
-          marginTop: "10px",
         }}
         modules={[Pagination]}
-        className=" m-12 p-12"
+        className=" m-12 p-12 "
       >
         <SwiperSlide>
           <img src={slider1} alt="slider-img" />
-          <h3 className="md:text-4xl text-2xl font-semibold uppercase text-center -mt-16 text-white">
+          <h3 className="md:text-4xl text-2xl  uppercase text-center -mt-16 text-white font-bold">
             Salad
           </h3>
         </SwiperSlide>
         <SwiperSlide>
           <img src={slider2} alt="slider-img" />
-          <h3 className="md:text-4xl text-2xl uppercase text-center -mt-16  text-white">
+          <h3 className="md:text-4xl text-2xl uppercase text-center -mt-16 font-bold text-white">
             Pizzas
           </h3>
         </SwiperSlide>
         <SwiperSlide>
           <img src={slider3} alt="slider-img" />
-          <h3 className="md:text-4xl text-2xl uppercase text-center -mt-16  text-white">
+          <h3 className="md:text-4xl text-2xl uppercase text-center -mt-16 font-bold text-white">
             Soups
           </h3>
         </SwiperSlide>
         <SwiperSlide>
           <img src={slider4} alt="slider-img" />
-          <h3 className="md:text-4xl text-2xl uppercase text-center -mt-16 text-white">
+          <h3 className="md:text-4xl text-2xl uppercase text-center -mt-16 text-white font-bold">
             Desserts
           </h3>
         </SwiperSlide>
 
-        <SwiperSlide>
+        <SwiperSlide className="mb-24">
           <img src={slider5} alt="slider-img" />
-          <h3 className="md:text-4xl text-2xl uppercase text-center -mt-16 text-white">
+          <h3 className="md:text-4xl text-2xl uppercase text-center -mt-16 text-white font-bold">
             Salads
           </h3>
         </SwiperSlide>
