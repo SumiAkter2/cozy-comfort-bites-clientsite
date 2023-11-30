@@ -35,8 +35,8 @@ const Dashboard = () => {
         ></label>
 
         <ul className="menu p-4 w-80 min-h-full bg-orange-300 gap-y-2 font-bold">
-          <h1 className="text-2xl font-bold p-4 mb-6">
-            Cozy Comfort <br />{" "}
+          <h1 className="text-2xl font-bold p-4 mb-6 tracking-widest">
+            Cozy Comfort <br />
             <span className="tracking-widest w-full">Bites</span>
           </h1>
           <li>
