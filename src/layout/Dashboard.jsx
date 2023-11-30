@@ -12,8 +12,10 @@ import { PiShoppingCartFill } from "react-icons/pi";
 import { MdReviews } from "react-icons/md";
 import { IoWalletSharp } from "react-icons/io5";
 import { NavLink, Outlet } from "react-router-dom";
+import useCart from "../Components/Hook/useCart";
 
 const Dashboard = () => {
+  const [cart] = useCart();
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -57,6 +59,7 @@ const Dashboard = () => {
           <li>
             <NavLink to="/dashboard/mycart">
               <PiShoppingCartFill /> My Cart
+              <div className="badge badge-lg">{cart.length}</div>
             </NavLink>
           </li>
           <li>

@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Provider/AuthProvider";
 import PrimaryButton from "../Shared/PrimaryButton/PrimaryButton";
 import Swal from "sweetalert2";
+
 const SignUp = () => {
   const navigate = useNavigate();
   const { createUser, updateUser } = useContext(AuthContext);
@@ -23,17 +24,29 @@ const SignUp = () => {
       console.log(signUpUser);
       updateUser(data.name, data.photoURL)
         .then(() => {
-          console.log("user profile info updated");
-          reset();
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "SignUp successfully",
-            showConfirmButton: false,
-            timer: 1000,
-          });
+          const savedUser = { name: data.displayName, email: data.email };
+          fetch(`http://localhost:5000/user`, {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(savedUser),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.insertedId) {
+                reset();
+                Swal.fire({
+                  position: "center",
+                  icon: "success",
+                  title: "SignUp successfully",
+                  showConfirmButton: false,
+                  timer: 1000,
+                });
 
-          navigate("/");
+                navigate("/");
+              }
+            });
         })
         .catch((err) => console.log(err));
     });
