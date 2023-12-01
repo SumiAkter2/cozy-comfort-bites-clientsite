@@ -2,9 +2,51 @@ import { Helmet } from "react-helmet-async";
 import useUser from "../../../../Components/Hook/useUser";
 import { MdDeleteForever } from "react-icons/md";
 import { MdAdminPanelSettings } from "react-icons/md";
+import { useQuery } from "@tanstack/react-query";
+import Swal from "sweetalert2";
 
 const AllUser = () => {
-  const [user] = useUser();
+  const [user, loading] = useUser();
+
+  const handleMakeAdmin = (user) => {
+    fetch(`http://localhost:5000/user/admin/${user._id}`, {
+      method: "PATCH",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `${user.name} is an admin now.`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+  };
+
+  const handleDeleteUser = (user) => {
+    console.log(user);
+    fetch(`http://localhost:5000/user/${user._id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount > 0) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Successfully Deleted!",
+            showConfirmButton: false,
+            timer: 1000,
+          });
+        }
+      });
+  };
+  if (loading) {
+    return <>loading...........</>;
+  }
   return (
     <div className="lg:w-2/3 mx-6">
       <Helmet>
@@ -17,6 +59,7 @@ const AllUser = () => {
           Manage All Users?
         </h2>
       </div>
+
       <div className="overflow-x-auto mt-4 mb-12 ">
         <table className="table">
           <thead className="text-xl text-black bg-orange-300">
@@ -35,13 +78,23 @@ const AllUser = () => {
 
                 <td>{usr.name}</td>
                 <td>${usr.email}</td>
-                <td>
-                  <button className="btn btn-ghost">
-                    <MdAdminPanelSettings size="30px" color="#FDBA7A" />
-                  </button>
+                <td className="text-green-600">
+                  {usr?.role === "admin" ? (
+                    "Admin"
+                  ) : (
+                    <button
+                      className="btn btn-ghost"
+                      onClick={() => handleMakeAdmin(usr)}
+                    >
+                      <MdAdminPanelSettings size="30px" color="#FDBA7A" />
+                    </button>
+                  )}
                 </td>
                 <td>
-                  <button className="btn btn-ghost">
+                  <button
+                    className="btn btn-ghost"
+                    onClick={() => handleDeleteUser(usr)}
+                  >
                     <MdDeleteForever size="30px" color="red" />
                   </button>
                 </td>
