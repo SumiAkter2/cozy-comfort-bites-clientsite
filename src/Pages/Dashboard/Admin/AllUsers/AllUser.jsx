@@ -1,13 +1,20 @@
 import { Helmet } from "react-helmet-async";
-import useUser from "../../../../Components/Hook/useUser";
 import { MdDeleteForever } from "react-icons/md";
 import { MdAdminPanelSettings } from "react-icons/md";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../../Components/Hook/useAxiosSecure";
 
 const AllUser = () => {
-  const [user, loading] = useUser();
-
+  const axiosSecure = useAxiosSecure();
+  const { data: user = [], refetch } = useQuery({
+    queryKey: ["user"],
+    queryFn: async () => {
+      const res = await axiosSecure.get("/user");
+      return res.data;
+    },
+  });
+  console.log(user.length);
   const handleMakeAdmin = (user) => {
     fetch(`http://localhost:5000/user/admin/${user._id}`, {
       method: "PATCH",
@@ -15,6 +22,7 @@ const AllUser = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount) {
+          refetch();
           Swal.fire({
             position: "top-end",
             icon: "success",
@@ -34,6 +42,7 @@ const AllUser = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount > 0) {
+          refetch();
           Swal.fire({
             position: "center",
             icon: "success",
@@ -44,9 +53,7 @@ const AllUser = () => {
         }
       });
   };
-  if (loading) {
-    return <>loading...........</>;
-  }
+
   return (
     <div className="lg:w-2/3 mx-6">
       <Helmet>
